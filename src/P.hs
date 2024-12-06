@@ -115,6 +115,23 @@ splitAtP n0 = P \ok z ->
         go2 (\z -> x (a:z)) (n-1) as
       go2 _ _ _ = z
 
+
+-- Alright, fine, I lied!
+--
+-- This function is why I wrote the parser originally,
+-- but it's not actually used in this project.
+-- 
+-- It is an arbitrary lambda binding for parsers
+--        λx.   ...
+--   lamP \x -> ...
+--
+-- It allows us to parse recursive languages, which is a
+-- lot of power on paper, but I don't find it very useful
+-- in practice.
+--
+-- it backtracks aggressively and recursively, and it can
+-- and must divierge, those are the rules unfortunately.
+--
 lamP ∷ (P s String -> P s a) -> P s a
 lamP k = do
   ref <- fromST $ newSTRef Nothing
