@@ -80,9 +80,9 @@ data Decl x a
 --
 --   loop:
 --   {
---     | foo | NL 1
+--     | foo | NL loop
 --   }
---   1
+--   loop
 --
 -- It works: foo will we written repeadely to the output,
 -- but it was not a deliberately designed.
