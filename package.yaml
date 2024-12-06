@@ -1,0 +1,121 @@
+name: l2
+
+dependencies:
+  - base
+  - containers
+  - comonad
+  - mtl
+  - profunctors
+  - bifunctors
+  - vector
+  - pointed
+  - megaparsec
+  - text
+  - bytestring
+  - transformers
+  - mmap
+
+library:
+  source-dirs: src
+executable:
+  source-dirs: app
+  main: Main.hs
+  dependencies:
+    - l2
+
+default-extensions:
+  - BangPatterns
+  - BinaryLiterals
+  - CUSKs
+  - ConstrainedClassMethods
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveAnyClass
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - DerivingVia
+  - DisambiguateRecordFields
+  - DoAndIfThenElse
+  - BlockArguments
+  - DuplicateRecordFields
+  - FieldSelectors
+  - EmptyCase
+  - EmptyDataDecls
+  - EmptyDataDeriving
+  - ExistentialQuantification
+  - ExplicitForAll
+  - ExplicitNamespaces
+  - ExtendedDefaultRules
+  - ExtendedLiterals
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GADTSyntax
+  - GADTs
+  - GeneralisedNewtypeDeriving
+  - ImplicitParams
+  - ImplicitPrelude
+  - ImportQualifiedPost
+  - ImpredicativeTypes
+  - IncoherentInstances
+  - TypeFamilyDependencies
+  - InstanceSigs
+  - ApplicativeDo
+  - KindSignatures
+  - LambdaCase
+  - LexicalNegation
+  - LiberalTypeSynonyms
+  - LinearTypes
+  - ListTuplePuns
+  - MagicHash
+  - MonadComprehensions
+  - DeepSubsumption
+  - NoMonomorphismRestriction
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NumericUnderscores
+  - NamedFieldPuns
+  - NamedWildCards
+  - NegativeLiterals
+  - HexFloatLiterals
+  - NondecreasingIndentation
+  - PartialTypeSignatures
+  - PatternGuards
+  - PatternSynonyms
+  - PolyKinds
+  - PolymorphicComponents
+  - QuantifiedConstraints
+  - PostfixOperators
+  - QualifiedDo
+  - RankNTypes
+  # - OverloadedRecordDot
+  # - OverloadedRecordUpdate
+  - RecordWildCards
+  - RecursiveDo
+  - RelaxedLayout
+  - RelaxedPolyRec
+  - RequiredTypeArguments
+  - RoleAnnotations
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - StaticPointers
+  - StandaloneKindSignatures
+  - TransformListComp
+  - TupleSections
+  - TypeAbstractions
+  - TypeApplications
+  - TypeData
+  - TypeFamilies
+  - TypeOperators
+  - TypeSynonymInstances
+  - UnboxedTuples
+  - UnboxedSums
+  - UnicodeSyntax
+  - ViewPatterns
+

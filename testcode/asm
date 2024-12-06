@@ -1,0 +1,40 @@
+
+-- Perhaps not a good example, but a pretty good stress test for the parser!
+
+-- You can select one of more of the blocks at the same time and they
+-- will print side by side.
+
+scope
+{
+  
+  0: |r8 | -- register selection
+  1: |r9 |
+  2: |r10|
+
+  --------- + ---------------- + ------- + ---------------- + --------- + ----------------  
+    set [A]                     set [!B]                       set [C]
+} --------- + ---------------- + ------- + ---------------- + --------- + ---------------- +
+{       [A]{|   mov  r11, rdi  |}    [B]{|   mov $0  , |0|  |}      [C]{|                  |} |
+|       [A]{|   xor  |0|, |0|  |}    [B]{|   mov $-1 , |1|  |}      [C]{|                  |} |
+|       [A]{|   mov  $1 , edx  |}    [B]{|   mov %0  , rax  |}      [C]{|                  |} |
+|       [A]{|   jmp .entry     |}    [B]{|   mov %1  , |2|  |}      [C]{|                  |} |
+|       [A]{|                  |}    [B]{|   xor rbx , rbx  |}      [C]{|                  |} |
+|       [A]{| .loop:           |}    [B]{|                  |}      [C]{|                  |} |
+|       [A]{|   mov  rdx, |0|  |}    [B]{| .loop:           |}      [C]{|                  |} |
+|       [A]{| .entry:          |}    [B]{|   cqto           |}      [C]{|                  |} |
+|       [A]{|   mov  rdi, rax  |}    [B]{|   idiv |2|       |}      [C]{|                  |} |
+|       [A]{|   mov  rsi, rdi  |}    [B]{|                  |}      [C]{| We might have    |} |
+|       [A]{|   cqto           |}    [B]{|   imul |0|, rax  |}      [C]{| code here in the |} |
+|       [A]{|   idiv rsi       |}    [B]{|   sub  rax, |1|  |}      [C]{| future but right |} |
+|       [A]{|                  |}    [B]{|   xchg |0|, |1|  |}      [C]{| now we don't     |} |
+|       [A]{|   imul |0|, rax  |}    [B]{|   or   rdx, rdx  |}      [C]{|                  |} |
+|       [A]{|   mov  rdx, rsi  |}    [B]{|   mov  |2|, rax  |}      [C]{|                  |} |
+|       [A]{|   sub  rax, rbx  |}    [B]{|   mov  rdx, |2|  |}      [C]{|                  |} |
+|       [A]{|   mov  rbx, rdx  |}    [B]{|                  |}      [C]{|                  |} |
+|       [A]{|   mov  |0|, rbx  |}    [B]{|   jnz .loop      |}      [C]{|                  |} |
+|       [A]{|                  |}    [B]{|                  |}      [C]{|                  |} |
+|       [A]{|   test rsi, rsi  |}    [B]{| .done:           |}      [C]{|                  |} |
+|       [A]{|   jne .loop      |}    [B]{|   sub |1|, rbx   |}      [C]{|                  |}
+}
+
+

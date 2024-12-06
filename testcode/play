@@ -1,0 +1,49 @@
+
+set [ loopA
+    , loopB
+    ]
+
+
+-- The "language" in our hole is just "print strings" atm
+
+-- here's a trick to get a newline!
+NL: |
+|
+
+
+-- Here's an unintended way to way to get loops
+
+[ loopA ]
+loop:
+{
+  | weee | NL
+
+  loop  -- again, again !
+}
+loop
+
+-- sight. They grow up too fast..!
+
+-----------
+
+-- This is how found out about it, the loop happens
+-- because 5 is included in the list of things
+
+[ loopB ]
+{ scope
+{
+    1: | A |
+    2: | B |
+    3: | C |
+    4: | D |
+    5:
+    {
+      1 2 3 4 5
+    }
+  }
+  {
+    5
+  }
+  NL
+}
+
