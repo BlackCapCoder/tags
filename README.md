@@ -3,7 +3,7 @@
 This is a small toy language that I think is interesting.
 
 
-Let's just start off with example some code!
+Let's just start off with example some code! Please exclude the formatting..
 
 
 ```lua
@@ -136,7 +136,7 @@ Well then, why is the project names "tags"?
   |
   }
 
-[This, works, too, you, need, individual, blocks] {}
+[This, works, too, you, don_t, need, individual, blocks] {}
 
 
 -- Tags, for now, works pretty much exactly like #define and #ifdef from C.
