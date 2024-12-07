@@ -197,7 +197,8 @@ What are we left with? `Var`, `Abs`, `App` (named scope)- it's literally just la
 but it sure doesn't feel that way!
 
 You can't escape! Is it even possible to write programming language with binders that doesn't just boil down to
-some flavour of LC?
+some flavour of LC? This language is not supposed to be turing-complete. so hopefully `Scope` does not turn out
+to be App
 
 
 ```haskell
