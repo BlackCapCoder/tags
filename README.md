@@ -6,7 +6,7 @@ This is a small toy language that I think is interesting.
 Let's just start off with example some code!
 
 
-~~~
+```haskell
 
 -- Line comment
 
@@ -89,22 +89,24 @@ bar:
 }
 
 
--- Blocks can be nested of cource, and things
--- probably works pretty much how you imagine it.
+```
 
--- The langauge does not have control flow,
--- or loops (not intensional ones, anyways >.<)
--- or anything like that- it is not trying to be
--- a programming language.
+Blocks can be nested of cource, and things
+probably works pretty much how you imagine it.
 
--- This is an experient with first class modules,
--- and it's designed so you can drop your own language
--- into it to add all the scope/module stuff. Neat!
+The langauge does not have control flow,
+or loops (not intensional ones, anyways >.<)
+or anything like that- it is not trying to be
+a programming language.
 
+This is an experient with first class modules,
+and it's designed so you can drop your own language
+into it to add all the scope/module stuff. Neat!
 
------------------
+Well then, why is the project names "tags"?
 
--- Well then, why is the project names "tags"?
+```lua
+
 
 [we]
 [are]
@@ -156,20 +158,21 @@ set [foo, bar, baz]
 
 set [!foo, bar, !baz, qux]
 
+```
 
--- One major difference from #define directives, is that we have scope.
--- The tags you enable are local to the current scope, and also
--- they are in fact attached to to the code where you put them.
--- You can move a module around, extend it and change it, but the tags
--- will stay firmly in place where you put them.
-
-
--- I want to do much more with tags, I just haven't done so yet.
--- Here are some ideas! :
-
--- You could select things to import from a module based on the
--- on the tags on the stuff inside, something like `import Foo [DEBUG]`
+One major difference from #define directives, is that we have scope.
+The tags you enable are local to the current scope, and also
+they are in fact attached to to the code where you put them.
+You can move a module around, extend it and change it, but the tags
+will stay firmly in place where you put them.
 
 
--- TODO: I've been writing this README for a while now!
+I want to do much more with tags, I just haven't done so yet.
+Here are some ideas! :
+
+You could select things to import from a module based on the
+on the tags on the stuff inside, something like `import Foo [DEBUG]`
+
+
+TODO: I've been writing this README for a while now!
 
