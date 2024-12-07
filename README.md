@@ -6,7 +6,7 @@ This is a small toy language that I think is interesting.
 Let's just start off with example some code!
 
 
-```haskell
+```lua
 
 -- Line comment
 
@@ -37,7 +37,8 @@ newline: |
 -- reference does not. Easy peasy, nobody will find the confusing.
 
 -- You can stick you code into blocks like this, if you'd like!
-
+```
+```lua
 {
   -- woah, look at me
   -- I'm in a block now
@@ -48,14 +49,15 @@ newline: |
   -- oh no, looks like the block is about to end
 }
 -- oh no, it's over now, time to go home
+````
 
 
--- A master class in language design if I may say so
--- myself, truely innovative!
+A master class in language design if I may say so myself, truely innovative!
 
--- Wait, what are those?
--- Those things down there .. in the block
+Wait, what are those?
+Those things ... down there .. in the block!
 
+```
 foo:
 {
   we:      | 1  |
@@ -67,13 +69,16 @@ foo:
   in:      | 7  |
   a:       | 8  |
   block:   | 9  |
+
   fear:    | 10 |
   us:      | 11 |
 }
+```
 
--- yikes! binders in blocks!
--- Is this just javascript objects all over again?
+yikes! binders in blocks!
+Is this just javascript objects all over again?
 
+```lua
 bar:
 {
   -- It is in fact NOT javascript objects.
@@ -87,9 +92,8 @@ bar:
 
   -- oh no, they are back.
 }
-
-
 ```
+
 
 Blocks can be nested of cource, and things
 probably works pretty much how you imagine it.
@@ -160,11 +164,11 @@ set [!foo, bar, !baz, qux]
 
 ```
 
-One major difference from #define directives, is that we have scope.
+One major difference from `#define` directives, is that we have scope.
 The tags you enable are local to the current scope, and also
 they are in fact attached to to the code where you put them.
 You can move a module around, extend it and change it, but the tags
-will stay firmly in place where you put them.
+will stay firmly in place where you put them./
 
 
 I want to do much more with tags, I just haven't done so yet.
