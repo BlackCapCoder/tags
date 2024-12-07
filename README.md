@@ -182,9 +182,11 @@ TODO: I've been writing this README for a while now!
 
 I still haven't explained `scope` and it's not at all intuitive, but:
 
-[*] `{ }` blocks does not introduce a new scope
-[*] You need to use `scope` explicitly to get scoping at all. If you don't you are effectively always in the global scope
-[*] `scope` is strictly more powerfull than a standard block scope
+-  `{ }` blocks does not introduce a new scope
+-  You need to use `scope` explicitly to get scoping at all. If you don't you are effectively always in the global scope
+- `scope` is strictly more powerfull than a standard block scope
 
 `scope` takes two "blocks" as arguments. if you only ever use the first one, it is equivallent to a standard block scope.
 `Lang.hs` has pretty good comments on this!
+
+I am not at all commited to `scope` or anything- this is just a toy project- I am trying wierd things!
