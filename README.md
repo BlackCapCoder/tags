@@ -3,7 +3,7 @@
 This is a small toy language that I think is interesting.
 
 
-Let's just start off with example some code! Please exclude the formatting..
+Let's just start off with example some code! Please excuse the formatting..
 
 
 ```lua
@@ -37,8 +37,7 @@ newline: |
 -- reference does not. Easy peasy, nobody will find the confusing.
 
 -- You can stick you code into blocks like this, if you'd like!
-```
-```lua
+
 {
   -- woah, look at me
   -- I'm in a block now
@@ -56,6 +55,9 @@ A master class in language design if I may say so myself, truely innovative!
 
 Wait, what are those?
 Those things ... down there .. in the block!
+
+
+
 
 ```
 foo:
@@ -87,8 +89,8 @@ bar:
 
   foo  -- import the contents of foo into the current scope
 
-  we are the binders that like in a block
-  fear us
+        we are the binders that like in a block
+        fear us
 
   -- oh no, they are back.
 }
@@ -132,36 +134,22 @@ Well then, why is the project names "tags"?
 
 [lorem]
   {
-  | Lorem, i say!
-  |
+    | Lorem, i say!
+    |
   }
 
-[This, works, too, you, don_t, need, individual, blocks] {}
+[ This, works, too, you, don_t, need, individual, blocks] {}
 
 
 -- Tags, for now, works pretty much exactly like #define and #ifdef from C.
 
-set [lorem]
+set [lorem] -- enable the tag [lorem].
 
--- You can turn a tag ON or OFF, and it will enable or disable
--- things that does/does not have that the tag.
+-- The block above was already skipped and is NOT retroactively unskipped
 
--- That block up there with the [lorem] tag was skipped, and even though
--- we've turned it on now it is too late.
-
-unset [lorem]
-
-
--- like tags you can group your `set`'s if want like
-
-set [foo, bar, baz]
-
-
--- and `unset` is in fact just sugar for negative
--- tags, which works like #ifndef
-
-set [!foo, bar, !baz, qux]
-
+unset [lorem        ] -- Turns [lorem] back off
+set   [!lorem       ] -- `unset [A]` is equivallent to `set [!A]`
+set   [foo, bar, baz] -- tags can be grouped in set/unset context
 ```
 
 One major difference from `#define` directives, is that we have scope.
