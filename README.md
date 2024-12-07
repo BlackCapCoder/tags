@@ -188,5 +188,71 @@ I still haven't explained `scope` and it's not at all intuitive, but:
 
 `scope` takes two "blocks" as arguments. if you only ever use the first one, it is equivallent to a standard block scope.
 `Lang.hs` has pretty good comments on this!
-
 I am not at all commited to `scope` or anything- this is just a toy project- I am trying wierd things!
+
+
+In fact, I am just going to inline the relevant part from `Lang.hs`, because I want to talk about it anyaways.
+There are literaally 5 constructors. `Hole` doesn't do anything, `Block` can be fully replaced by `Scope`.
+What are we left with? `Var`, `Abs`, `App` (named scope)- it's literally just lambda calculus with a different flavour.
+but it sure doesn't feel that way!
+
+You can't escape! Is it even possible to write programming language with binders that doesn't just boil down to
+some flavour of LC?
+
+
+```haskell
+-- A binder
+--
+data B x
+   = V x      -- Variable
+   | T x Bool -- Tag
+   deriving
+     ( Show, Functor
+     )
+
+data Decl x a
+
+   -- An arbitrary hole that we don't care about.
+   -- It is left as-is in the syntax tree, so you can
+   -- inject another language into this one.
+   --
+   = Hole a
+
+   -- V binders are effectively module imports.
+   -- T binders set and/or clear tags
+   | Var (B x)
+   --
+   -- Tags look like this:
+   --   [foo] [bar] [baz] { code code code }
+   --
+   -- They are alluxary extra binders you can attach to code- any code!
+   -- The names have no inherent meaning. Tags are local to the scope,
+   -- and each tag is attached to a specific piece of code.
+   -- 
+   -- At the moment tags can only be used to enable/disable code
+   -- siminar to #define, but I want to find more ways to use tags.
+   --
+   -- Like using them to select what to import from a module!
+   -- I've had that and a few other ideas in the back of my head since the
+   -- start, but I am not sure if they CANT do that already!
+
+
+   -- V binders bind the scope of the RHS to a name in the current scope
+   -- T binders will skip the RHS if the tag does not match
+   | Abs (B x) (Decl x a)
+
+   -- Block does not introduce a new scope, it only
+   -- groups declarations together
+   | Block [Decl x a]
+
+   -- Changes to the scope made on the LHS are cleared after the RHS.
+   -- That is, the RHS recieves the scope from of the the LHS, makes
+   -- its own changes, then, every change from the LHS that has not
+   -- not been overwritten by the RHS are discarded.
+   --
+   -- If we only ever use the LHS, scope behaves like a traditional
+   -- block scope. If we only ever use the RHS, it behaves as-if we only
+   -- have a single global scope.
+   --
+   | Scope (Decl x a) (Decl x a)
+```
